@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Previsão do Tempo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+        <h1>Previsão do Tempo</h1>
+    <div class="input-group">
+      <input type="text" id="cidade" placeholder="Digite o nome da cidade (ex: São Paulo)">
+      <button id="btn-buscar">Buscar Clima</button>
+    </div>
+
+    <div id="resultado" class="resultado escondido" aria-live="polite">
+      <h3 id="nome-cidade">--</h3>
+      <div class="clima-atual">
+        <span id="icone-clima" class="icone-clima" aria-hidden="true"></span>
+        <div>
+          <h4 id="descricao-clima"></h4>
+          <p id="temp">-- °C</p>
+          <div class="detalhes-atuais">
+            <p id="sensacao">Sensação: -- °C</p>
+            <p id="vento">Vento: -- km/h</p>
+            <p id="umidade">Umidade: --%</p>
+          </div>
+        </div>
+      </div>
+      <section class="previsao-semanal" aria-label="Previsão para os próximos dias">
+        <h4>Próximos dias</h4>
+        <div id="dias-previsao" class="dias-previsao"></div>
+        <p id="detalhes-dia" class="detalhes-dia" aria-live="polite"></p>
+      </section>
+    </div>
+
+    <p id="erro" class="erro escondido"></p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

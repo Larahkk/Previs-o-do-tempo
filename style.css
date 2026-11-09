@@ -1,0 +1,243 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #b1ccf5, #e1e9fa);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 32px 16px;
+  transition: background 700ms ease;
+}
+
+body[data-weather="sunny"] {
+  background: linear-gradient(135deg, #f8d77a, #f49b72);
+}
+
+body[data-weather="cloudy"] {
+  background: linear-gradient(135deg, #a9bfd2, #dce5ed);
+}
+
+body[data-weather="rainy"] {
+  background: linear-gradient(135deg, #637b99, #a9bdd0);
+}
+
+body[data-weather="stormy"] {
+  background: linear-gradient(135deg, #414b68, #858da7);
+}
+
+body[data-weather="snowy"] {
+  background: linear-gradient(135deg, #b8d9e8, #f0f7fa);
+}
+
+body[data-weather="foggy"] {
+  background: linear-gradient(135deg, #aeb9c4, #e1e5e9);
+}
+
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 680px;
+  text-align: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #6d61da;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+input, button {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.75;
+}
+
+.resultado {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #eef6ff;
+  border-radius: 8px;
+  opacity: 1;
+}
+
+.resultado h3 {
+  font-size: 2rem;
+  color: #007bff;
+}
+
+.erro {
+  color: #d9534f;
+  margin-top: 10px;
+}
+
+.escondido {
+  display: none;
+}
+
+.resultado.aparecendo {
+  animation: surgir 450ms ease-out both;
+}
+
+.clima-atual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin: 18px 0 24px;
+}
+
+.icone-clima {
+  font-size: 4rem;
+  line-height: 1;
+  animation: flutuar 2.5s ease-in-out infinite;
+}
+
+#descricao-clima {
+  margin-bottom: 6px;
+  color: #354052;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+#temp {
+  color: #1f2937;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.detalhes-atuais {
+  display: grid;
+  gap: 4px;
+  color: #526174;
+  font-size: 0.9rem;
+}
+
+.previsao-semanal h4 {
+  margin-bottom: 12px;
+  color: #354052;
+}
+
+.dias-previsao {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(78px, 1fr));
+  gap: 8px;
+}
+
+.dia-previsao {
+  padding: 12px 6px;
+  border-radius: 8px;
+  background: white;
+  color: #354052;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font: inherit;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.dia-previsao:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(39, 67, 102, 0.14);
+}
+
+.dia-previsao.selecionado {
+  border-color: #007bff;
+  box-shadow: 0 3px 10px rgba(0, 123, 255, 0.14);
+}
+
+.dia-previsao .dia-nome,
+.dia-previsao .temperaturas {
+  margin-top: 5px;
+}
+
+.dia-previsao .icone-dia {
+  margin: 8px 0;
+  font-size: 1.7rem;
+}
+
+.dia-previsao .temperaturas {
+  font-size: 0.9rem;
+}
+
+.detalhes-dia {
+  min-height: 1.25em;
+  margin-top: 12px;
+  color: #526174;
+  font-size: 0.9rem;
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes flutuar {
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resultado.aparecendo,
+  .icone-clima {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 520px) {
+  body {
+    padding: 16px 10px;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .dias-previsao {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
